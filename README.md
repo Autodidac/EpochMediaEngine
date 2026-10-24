@@ -33,7 +33,10 @@ owner-authorized migrated implementation, is MPL-2.0. Historical release license
 remain unchanged. Current source version is 0.1.0; no release artifacts or native runtime acceptance are claimed.
 
 Reviewed EpochGui source dependency: `f83b2f15385598b8efbb028a6f391ca637e07634` (0.90.0).
-Other working dependency identities remain pending; this is not a release-ready graph.
+Reviewed Demo source dependency: `a01214e3666ef7fc657c270d9cbd208de50064bc` (0.6.0).
+All ten Windows Demo composition/configuration builds and CPU contracts pass.
+The Media-owned optional composition check and native runtime acceptance remain
+separate; this source graph is not a binary-release acceptance claim.
 
 ## Commercial use and giving back
 

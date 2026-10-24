@@ -117,7 +117,7 @@ jobs:
         shell: pwsh
         run: |
           $gui = if ('${{ matrix.graph }}' -eq 'gui') { 'ON' } else { 'OFF' }
-          .ci-tools/Scripts/cmake -S . -B out -G "Visual Studio 17 2022" -A x64 -DBUILD_TESTING=ON -DEPOCHMEDIA_BUILD_GUI_DEMO=$gui -DEPOCHGUI_DEMO_ROOT="$pwd/dependencies/EpochGui_Demo" -DEPOCHGUI_ROOT="$pwd/dependencies/EpochGui" -DEPOCH_MEDIA_ROOT="$pwd" -DCMAKE_MSVC_DEBUG_INFORMATION_FORMAT=Embedded
+          .ci-tools/Scripts/cmake -S . -B out -G "Visual Studio 17 2022" -A x64 -DBUILD_TESTING=ON "-DEPOCHMEDIA_BUILD_GUI_DEMO=$gui" "-DEPOCHGUI_DEMO_ROOT=$pwd/dependencies/EpochGui_Demo" "-DEPOCHGUI_ROOT=$pwd/dependencies/EpochGui" "-DEPOCH_MEDIA_ROOT=$pwd" -DCMAKE_MSVC_DEBUG_INFORMATION_FORMAT=Embedded
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
       - name: Build
         run: .ci-tools/Scripts/cmake --build out --config Release --parallel 2
