@@ -80,7 +80,6 @@ jobs:
           if-no-files-found: warn
 
   gui:
-    if: github.event_name == 'workflow_dispatch' && inputs.gui_composition
     runs-on: windows-2022
     strategy:
       fail-fast: false
