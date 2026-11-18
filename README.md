@@ -21,8 +21,8 @@ Audio dependencies. `dependencies.json` records the reviewed source graph.
 No configuration fetches from the network or falls back to Engine source.
 
 The optional demonstration reuses EpochGui_Demo's real renderer/native host.
-Its Libraries page advances generated timeline metadata, draws the admitted
-aspect-fit rectangle and GUI playhead. The media-only composition requires no
+Its Libraries page previews a generated 20-frame atlas with Play, Pause,
+Step, Seek and Loop. The media-only composition requires no
 Audio or Platform dependency and introduces no duplicate renderer.
 
 Configure core/tests with `cmake -S . -B build` and a module-capable generator,
@@ -37,11 +37,10 @@ The original repository history is retained. First-party source, including the
 owner-authorized migrated implementation, is MPL-2.0. Historical release licenses
 remain unchanged. Current source version is 0.1.1. Native playback acceptance is separate.
 
-Reviewed EpochGui source dependency: `f83b2f15385598b8efbb028a6f391ca637e07634` (0.90.0).
-Reviewed Demo source dependency: `a01214e3666ef7fc657c270d9cbd208de50064bc` (0.6.0).
-All ten Windows Demo composition/configuration builds and CPU contracts pass.
-The Media-owned optional composition check and native runtime acceptance remain
-separate; this source graph is not a binary-release acceptance claim.
+Use EpochGui 0.90.4 (`7761f146b55fa4f78d15c53db5c33385f80f58f9`) and the companion
+EpochGui Demo atlas source (`0bb44dc85de873f6d5d39948b80f6f4cf6eba74d`). The core contracts
+passed on Windows x64 in Debug and Release. The optional atlas GUI built in
+Release and passed its Libraries contract. Native interaction remains open.
 
 ## Commercial use and giving back
 
