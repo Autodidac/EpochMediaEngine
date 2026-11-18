@@ -8,6 +8,11 @@ interactive EpochGui demonstration. The core `Epoch::MediaEngine` target owns
 pixel aspect, rotation and contain-fit geometry. It does not decode video or
 claim audio/video synchronization.
 
+Use `current_atlas_frame` to turn an admitted transport position into the pixel
+rectangle of an equal-sized, row-major frame atlas. The renderer supplies the
+atlas pixels. The CPU contract checks layout rejection, last-frame clamping,
+and large loop advances.
+
 ## Source distribution
 
 EpochGui accompanies the Media demonstration as a separate public dependency;
@@ -22,15 +27,15 @@ Audio or Platform dependency and introduces no duplicate renderer.
 
 Configure core/tests with `cmake -S . -B build` and a module-capable generator,
 then build and run CTest. To build the interactive demonstration, additionally
-set `EPOCHMEDIA_BUILD_GUI_DEMO=ON`, `EPOCHGUI_DEMO_ROOT`, `EPOCHGUI_ROOT`,
-and `EPOCH_MEDIA_ROOT` to the explicit
-local repositories (the last points here). Build `epoch_gui_demo_app`; the
+set `EPOCHMEDIA_BUILD_GUI_DEMO=ON` and point `EPOCHGUI_DEMO_ROOT` and
+`EPOCHGUI_ROOT` to the reviewed local source. Media supplies its own module
+to that composition. Build `epoch_gui_demo_app`; the
 result is named `EpochMediaDemo` and opens its Libraries page. This is a source
 composition, not a packaged release or runtime-acceptance claim.
 
 The original repository history is retained. First-party source, including the
 owner-authorized migrated implementation, is MPL-2.0. Historical release licenses
-remain unchanged. Current source version is 0.1.0; no release artifacts or native runtime acceptance are claimed.
+remain unchanged. Current source version is 0.1.1. Native playback acceptance is separate.
 
 Reviewed EpochGui source dependency: `f83b2f15385598b8efbb028a6f391ca637e07634` (0.90.0).
 Reviewed Demo source dependency: `a01214e3666ef7fc657c270d9cbd208de50064bc` (0.6.0).
