@@ -499,7 +499,18 @@ export namespace epochengine::media::timeline_preview
             return last;
         if (!(frame > 0.0))
             return 0u;
-        return (std::min)(static_cast<std::uint64_t>(frame), last);
+        auto index = (std::min)(static_cast<std::uint64_t>(frame), last);
+        const auto rate = state.source->frame_rate;
+        const auto frame_start = [rate](std::uint64_t frame_index) noexcept {
+            return static_cast<double>(frame_index) * rate.denominator / rate.numerator;
+        };
+        // The rounded FPS product can land on either side of an exact seek
+        // timestamp. Compare adjacent frame starts in the playhead's units.
+        if (index > 0u && state.playhead_seconds < frame_start(index))
+            --index;
+        else if (index < last && state.playhead_seconds >= frame_start(index + 1u))
+            ++index;
+        return index;
     }
 
     struct AtlasLayout final
