@@ -13,6 +13,8 @@ rectangle of an equal-sized, row-major frame atlas. The renderer supplies the
 atlas pixels. The CPU contract checks layout rejection, last-frame clamping,
 and large loop advances.
 
+Seeking to an exact frame timestamp selects that frame, including 30000/1001 fps material.
+
 ## Source distribution
 
 EpochGui accompanies the Media demonstration as a separate public dependency;
@@ -35,7 +37,7 @@ composition, not a packaged release or runtime-acceptance claim.
 
 The original repository history is retained. First-party source, including the
 owner-authorized migrated implementation, is MPL-2.0. Historical release licenses
-remain unchanged. Current source version is 0.1.1. Native playback acceptance is separate.
+remain unchanged. Current source version is 0.1.2. Native playback acceptance is separate.
 
 Use EpochGui 0.90.4 (`7761f146b55fa4f78d15c53db5c33385f80f58f9`) and the companion
 EpochGui Demo atlas source (`0bb44dc85de873f6d5d39948b80f6f4cf6eba74d`). The core contracts

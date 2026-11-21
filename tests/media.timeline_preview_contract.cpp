@@ -1,7 +1,9 @@
 // SPDX-License-Identifier: MPL-2.0
 
+#include <cmath>
 #include <cstdint>
 #include <limits>
+#include <optional>
 
 import media.timeline_preview;
 
@@ -46,6 +48,21 @@ int main()
         || !media::seek(preview, source.duration_seconds)
         || media::current_frame_index(preview) != source.frame_count - 1)
         return 8;
+
+    source = media::contract_source();
+    source.frame_rate = {30'000, 1'001};
+    source.duration_seconds = static_cast<double>(source.frame_count) * 1'001 / 30'000;
+    if (!media::admit(preview, source, {1, 4}))
+        return 9;
+    for (std::uint64_t index = 1; index < source.frame_count; ++index)
+    {
+        const double boundary = static_cast<double>(index) * 1'001 / 30'000;
+        if (!media::seek(preview, std::nextafter(boundary, 0.0))
+            || media::current_frame_index(preview) != index - 1u
+            || !media::seek(preview, boundary)
+            || media::current_frame_index(preview) != index)
+            return 9;
+    }
     return 0;
 }
 #endif
